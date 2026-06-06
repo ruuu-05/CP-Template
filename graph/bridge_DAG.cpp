@@ -15,6 +15,7 @@ vector<pair<int, int>> adj[N]; // {neighbor, edge_id} - Edge ID is vital for mul
 int tin[N], low[N], timer;
 bool is_bridge[M]; // M is the number of edges
 
+
 void find_bridges(int u, int p_edge_id = -1) {
     tin[u] = low[u] = ++timer;
     
