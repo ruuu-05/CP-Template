@@ -1,9 +1,17 @@
 #include <iostream>
 #include <bits/stdc++.h>  
+
+ 
+#define nl "\n"
+#define ll long long
+#define all(v) v.begin(),v.end()
+#define rall(v) v.rbegin(),v.rend()
+#define fixed(n) fixed << setprecision(n)
+
  
 using namespace std;
 
-
+// only union try to think in revrse on deleteing 
 struct DSU{
     vector<int> parent, sz;
     int mxsz, cmps;
@@ -37,3 +45,43 @@ struct DSU{
         cmps--;
     }
 };
+
+
+//----------MST---------------- 
+
+//PRIM
+
+//KRUSKAL [DSU]
+
+struct edge
+{
+    int a, b;
+    ll w;
+};
+ 
+bool operator< (edge& e1, edge& e2){
+    return e1.w < e2.w;
+}
+bool operator> (edge& e1, edge& e2){
+    return e1.w > e2.w;
+}
+ 
+vector<edge> edges;
+int n ;
+
+void kruskal(){
+    DSU dsu(n);
+    sort(all(edges));
+    ll cost = 0;
+    for(auto edg : edges){
+        int x = edg.a, y = edg.b;
+        if(dsu.find(x) != dsu.find(y)){
+            cost+= edg.w;
+            dsu.uni(x, y);
+        }
+    }
+    if(dsu.cmps != 1)
+        return void(cout << "IMPOSSIBLE" << endl);
+    
+    cout << cost << endl;
+}
