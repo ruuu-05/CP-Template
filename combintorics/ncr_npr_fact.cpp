@@ -50,7 +50,7 @@ ll C(ll n, ll r) {
 }
 
 
-//ncr without overflow
+//ncr multplicative fromula
 bool ncr(int n , int r , int limit){
 	r = min(r , n-r ) ;
 	_int128 ans = 1 ;
