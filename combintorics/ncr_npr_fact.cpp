@@ -49,6 +49,21 @@ ll C(ll n, ll r) {
     return P(n, r) * factInv[r] % MOD;
 }
 
+
+//ncr without overflow
+bool ncr(int n , int r , int limit){
+	r = min(r , n-r ) ;
+	_int128 ans = 1 ;
+	for(int i = 1 ; i <= r ; ++i){
+		ans = ans * (n-i + 1 ) / i  ;
+		if(ans >= limit ) return 1;
+	}
+
+	return ans >= limit ;
+}
+
+
+
 int main() {
     fastio();
     init();
