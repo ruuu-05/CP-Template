@@ -1,0 +1,1 @@
+NIM GAME : balls in bin1 ^ balls in bin2 ^ ... ^ balls in binn == 0 ? player2 win : player 1 wins
