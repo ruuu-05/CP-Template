@@ -66,3 +66,10 @@ NIM GAME : balls in bin1 ^ balls in bin2 ^ ... ^ balls in binn == 0 ? player2 wi
  *      - If XOR sum == 0 -> Second player wins.
  * ==============================================================================
 */
+
+Cayley's Formula: Total labeled spanning trees for n vertices = n^(n-2)
+Handshaking Lemma: Sum of all vertex degrees = 2 * |E|, and number of odd-degree vertices is always even
+Maximum Edges in Simple Undirected Graph: n * (n - 1) / 2
+Total Possible Distinct Graphs on n Vertices: 2^(n * (n - 1) / 2)
+Eulerian Circuit Condition (Undirected): Connected component with all vertices having even degree
+Eulerian Path Condition (Undirected): Connected component with exactly 0 or 2 vertices having odd degree
