@@ -1,1 +1,68 @@
 NIM GAME : balls in bin1 ^ balls in bin2 ^ ... ^ balls in binn == 0 ? player2 win : player 1 wins
+
+/*
+ * ==============================================================================
+ * ESSENTIAL BITWISE IDENTITIES & TRICKS FOR COMPETITIVE PROGRAMMING
+ * ==============================================================================
+ * 
+ * 1. ARITHMETIC & BITWISE RELATIONSHIPS
+ *    - x + y = (x ^ y) + 2 * (x & y)
+ *    - x + y = (x | y) + (x & y)
+ *    - x & y = (x + y) - (x | y)
+ *    - x | y = (x + y) - (x & y)
+ *    - x ^ y = (x | y) - (x & y)
+ * 
+ * 2. LOWEST SET BIT & MASKING TRICKS
+ *    - x & (-x)        : Isolates the lowest set bit (Lowbit / Fenwick tree step)
+ *    - x & (x - 1)     : Clears the lowest set bit (Turns off the rightmost 1)
+ *    - x | (x + 1)     : Sets the lowest cleared bit (Turns on the rightmost 0)
+ *    - x & (x + 1)     : Clears all trailing ones
+ *    - x ^ (x + 1)     : Flips all trailing ones and the first 0 above them
+ * 
+ * 3. POWER OF 2 & CHECKS
+ *    - (x > 0) && ((x & (x - 1)) == 0) : Checks if x is a power of 2
+ *    - (x & (1LL << k))                : Checks if the k-th bit is set
+ *    - x | (1LL << k)                  : Turns ON the k-th bit
+ *    - x & ~(1LL << k)                 : Turns OFF the k-th bit
+ *    - x ^ (1LL << k)                  : Toggles the k-th bit
+ * 
+ * 4. DE MORGAN'S LAWS FOR BITS
+ *    - ~(x | y) == (~x & ~y)
+ *    - ~(x & y) == (~x | ~y)
+ * 
+ * 5. MISCELLANEOUS
+ *    - x ^ x = 0                       : XORing a number with itself gives 0
+ *    - x ^ 0 = x                       : XORing with 0 leaves the number unchanged
+ *    - (x ^ y) ^ x = y                 : Commutative / Reversible property
+ * ==============================================================================
+*/
+
+/*
+ * ==============================================================================
+ * COMPETITIVE PROGRAMMING — GAME THEORY NOTES & CHEAT SHEET
+ * ==============================================================================
+ * 
+ * 1. BASIC CONCEPTS (NORMAL PLAY CONVENTION)
+ *    - Impartial Game: Both players have the exact same set of valid moves from any state.
+ *    - Winning State (W): A state from which the current player can force a win. 
+ *      (At least one transition leads to a Losing state).
+ *    - Losing State (L): A state from which the current player is bound to lose if both play optimally. 
+ *      (All transitions lead to Winning states).
+ *    - Terminal States: States with no valid moves are automatically **Losing States** (L).
+ * 
+ * 2. NIM GAME & BOUTON'S THEOREM
+ *    - Setup: $N$ piles of stones. A player can remove any number of stones from a single pile.
+ *    - Theorem: The first player has a winning strategy if and only if the **XOR sum** 
+ *      of all pile sizes is **non-zero** ($A_1 \oplus A_2 \oplus \dots \oplus A_n \neq 0$).
+ *    - If XOR sum is 0, it's a Losing state (L) for the current player.
+ * 
+ * 3. SPRAGUE-GRUNDY THEOREM (GENERALIZED NIM)
+ *    - Theorem: Every impartial game under normal play convention is equivalent to a 
+ *      standard Nim pile of size equal to its **Grundy value** (or Nim-value).
+ *    - Grundy Value Calculation uses **MEX** (Minimum Excluded non-negative integer):
+ *        Grundy(state) = MEX({ Grundy(next_state) })
+ *    - Total game value = XOR sum of Grundy values of all sub-games.
+ *      - If XOR sum != 0 -> First player wins.
+ *      - If XOR sum == 0 -> Second player wins.
+ * ==============================================================================
+*/
